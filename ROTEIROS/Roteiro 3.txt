@@ -1,0 +1,83 @@
+Roteiro 3:
+
+1) 
+	package main
+
+import "fmt"
+
+ 
+
+func main() {
+var b int = 42 
+var p *int = &b
+fmt.Println("Valor de b : ",b)
+fmt.Println("Endereco de b : ",p)
+
+
+}
+
+2)
+	package main
+
+import "fmt"
+
+ 
+
+func main() {
+var b int = 42 
+var p *int = &b
+fmt.Println("Valor de b antes : ",b)
+*p = 100
+fmt.Println("O valor novo de b: ",b)
+
+
+}
+
+3) 
+	package main
+
+import "fmt"
+
+func trocadevalores(a,b *int) {
+     temp := *a
+    *a = *b
+    *b = temp
+    
+ }
+
+func main() {
+var a int = 42 
+var b int = 100
+fmt.Println("Valor de a: ",a, "Valor de b: ",b)
+trocadevalores(&a,&b)
+fmt.Println("Valor de a: ",a, "Valor de b: ",b)
+}
+
+4) 
+	package main
+
+import "fmt"
+
+type Tarefa struct {
+    id        int
+    descricao string
+    proxima   *Tarefa
+}
+
+func main() {
+    
+    t1 := &Tarefa{id: 1, descricao: "Estudar Go"}
+    t2 := &Tarefa{id: 2, descricao: "Fazer exercícios"}
+    t3 := &Tarefa{id: 3, descricao: "Descansar"}
+
+   
+    t1.proxima = t2
+    t2.proxima = t3
+
+    
+    atual := t1
+    for atual != nil {
+        fmt.Println("ID:", atual.id, "Descrição:", atual.descricao)
+        atual = atual.proxima
+    }
+}

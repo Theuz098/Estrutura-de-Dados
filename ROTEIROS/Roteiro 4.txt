@@ -1,0 +1,38 @@
+Roteiro 4:
+
+1) 
+
+package main
+
+import "fmt"
+
+func palindromo(palavra string){
+	// Cria uma "pilha" com os caracteres da palavra
+	lista := []byte{}
+
+	for i := 0; i < len(palavra); i++ {
+		lista = append(lista, palavra[i]) // empilha caractere
+	}
+
+	reverso := ""
+
+	// Desempilha os caracteres e forma a palavra ao contrário
+	for i := len(lista) - 1; i >= 0; i-- {
+		reverso += string(lista[i])
+	}
+
+	// Compara a palavra original com a invertida
+	if palavra == reverso {
+		fmt.Println("E um Palindromo")
+	} else {
+	    fmt.Println("Nao e um Palindromo")
+	}
+	
+}
+
+func main() {
+	palindromo("arara")   // true
+	palindromo("radar")   // true
+	palindromo("banana")  // false
+}
+	
